@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.oamaru.tvmaze.R" />
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="showImage"
+            type="String" />
+
+        <variable
+            name="showName"
+            type="String" />
+
+        <variable
+            name="showSummary"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:glide="@{showImage}"
+                android:placeholder="@{R.drawable.no_img_portrait_text}"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ghost" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:text="@{showName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Ghost" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{Html.fromHtml(showSummary)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                tools:text="Paper Girls follows four young girls who, while out delivering papers on the morning after Halloween in 1988, become unwittingly caught in a conflict between warring factions of time-travelers, sending them on an adventure through time that will save the world. As they travel between our present, the past, and the future — they encounter future versions of themselves and now must choose to embrace or reject their fate. An emotional adventure in which the girls and the women they eventually become are tough, their friendships are authentic, and their journey through time is epic." />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

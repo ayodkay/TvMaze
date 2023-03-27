@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.oamaru.tvmaze.R" />
+
+        <import type="android.text.Html" />
+
+        <variable
+            name="viewModel"
+            type="com.oamaru.tvmaze.ui.detail.episode.details.EpisodeDetailViewModel" />
+
+    </data>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           tools:context=".ui.detail.episode.details.EpisodeDetailFragment">
+
+           <ImageView
+               android:id="@+id/imageView5"
+               android:layout_width="match_parent"
+               android:layout_height="350dp"
+               android:glide="@{viewModel.selectedEpisode.image.original}"
+               android:placeholder="@{R.drawable.no_img_portrait_text}"
+               android:scaleType="centerCrop"
+               android:src="@drawable/ghost"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/textView5"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="@dimen/dimen_8dp"
+               android:text="@{Html.fromHtml(viewModel.selectedEpisode.episodeSummary())}"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/textView6"
+               tools:text="Dean shocks Sam by popping open the trunk of the Impala and showing him that he has kidnapped Crowley. Kevin freaks out when he sees the King of Hell, but Sam and Dean convince him that they need Crowley to find the demons on Earth. Meanwhile, Abaddon re-emerges and plans to take over Hell." />
+
+
+           <TextView
+               android:id="@+id/textView6"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="@dimen/dimen_16sp"
+               android:layout_marginTop="@dimen/dimen_8dp"
+               android:layout_marginStart="@dimen/dimen_8dp"
+               android:text="@{viewModel.selectedEpisode.seasonEpisode()}"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/imageView5"
+               tools:text="Season 1 Episode 200" />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </ScrollView>
+</layout>

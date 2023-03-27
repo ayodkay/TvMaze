@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ScheduleFragment">
+
+    <fragment
+        android:id="@+id/ScheduleFragment"
+        android:name="com.oamaru.tvmaze.ui.schedule.ScheduleFragment"
+        android:label="@string/schedule_fragment_label"
+        tools:layout="@layout/fragment_schedule">
+
+        <action
+            android:id="@+id/action_ScheduleFragment_to_ShowDetailsFragment"
+            app:destination="@id/ShowDetailsFragment">
+
+            <argument
+                android:name="title"
+                app:argType="string" />
+
+            <argument
+                android:name="selected_show"
+                app:argType="com.oamaru.data.models.Show" />
+
+            <argument
+                android:name="show_seasons"
+                app:argType="com.oamaru.data.models.response.ShowSeasonsResponse[]" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ShowDetailsFragment"
+        android:name="com.oamaru.tvmaze.ui.detail.ShowDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_show_details">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="selected_show"
+            app:argType="com.oamaru.data.models.Show" />
+
+        <argument
+            android:name="show_seasons"
+            app:argType="com.oamaru.data.models.response.ShowSeasonsResponse[]" />
+
+        <action
+            android:id="@+id/action_ShowDetailsFragment_to_ScheduleFragment"
+            app:destination="@id/ScheduleFragment" />
+
+        <action
+            android:id="@+id/action_ShowDetailsFragment_to_EpisodeDetailsFragment"
+            app:destination="@id/EpisodeDetailsFragment">
+            <argument
+                android:name="title"
+                app:argType="string" />
+
+            <argument
+                android:name="episode"
+                app:argType="com.oamaru.data.models.response.ShowEpisodeResponse" />
+
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/EpisodeDetailsFragment"
+        android:name="com.oamaru.tvmaze.ui.detail.episode.details.EpisodeDetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_episode_detail">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="episode"
+            app:argType="com.oamaru.data.models.response.ShowEpisodeResponse" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_show_details"
+        app:destination="@+id/ShowDetailsFragment">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="selected_show"
+            app:argType="com.oamaru.data.models.Show" />
+
+        <argument
+            android:name="show_seasons"
+            app:argType="com.oamaru.data.models.response.ShowSeasonsResponse[]" />
+
+    </action>
+</navigation>
